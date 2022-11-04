@@ -52,6 +52,9 @@ plt.xlabel('Time')
 plt.ylabel('Total KE')
 plt.show()
 
+print(mass[-1])
+print(KE_tot[-1])
+
 # plt.axhline(y=9.787415,color='red')
 
 # plt.scatter(time[750:],mass[750:],s=5)

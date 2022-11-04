@@ -245,7 +245,7 @@ Real DenProfileCyl(const Real rad, const Real phi, const Real z) {
   // for (double i: arr)
   //   std::cout << i << std::endl;
 
-  dentem = 0.08;
+  dentem = 1.0;
   // Real nfil = n_fil;
   // int i = 0;
   // while (i <= nfil) {

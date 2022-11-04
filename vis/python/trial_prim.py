@@ -91,11 +91,8 @@ for k in range(len(files)):
     for i in range(63):
         for j in range(63):
             L_sum = L_sum + ((r[i+1]+r[i])/2)**(2) * data['rho'][0, j, i] * data['vel2'][0, j, i] * (r[i+1]-r[i]) * (theta[j+1]-theta[j])
-            M_sum = M_sum + data['rho'][0, j, i] * (r[i+1]-r[i]) * (theta[j+1]-theta[j])
-            E_sum = (E_sum + (1/2)*(data['rho'][0, j, i] * (r[i+1]-r[i]) * (theta[j+1]-theta[j]))*((data['vel1'][0, j, i]**(2)+
-                data['vel2'][0, j, i]**(2)+data['vel3'][0, j, i]**(2))))
-            # - (data['rho'][0, j, i] * (r[i+1]-r[i]) * 
-            # (theta[j+1]-theta[j]))/((r[i+1]+r[i])/2))
+            M_sum = M_sum + data['rho'][0, j, i] * (r[i+1]-r[i]) * (theta[j+1]-theta[j]) * ((r[i+1]+r[i])/2)
+            E_sum = E_sum + (1/2)*(data['rho'][0, j, i]*(r[i+1]-r[i])*(theta[j+1]-theta[j])*((r[i+1]+r[i])/2))*((data['vel1'][0, j, i]**(2)+data['vel2'][0, j, i]**(2)+data['vel3'][0, j, i]**(2)))
     L.append(L_sum)
     M.append(M_sum)
     E.append(E_sum)
@@ -114,6 +111,9 @@ plt.scatter(t,E)
 plt.xlabel('time')
 plt.ylabel('KE')
 plt.show()
+
+print(M[-1])
+print(E[-1])
 
 # for i in range(len(files)):
 #     data = athena_read.athdf(files[i])
