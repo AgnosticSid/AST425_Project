@@ -75,26 +75,45 @@ files = natsort.natsorted(files)
 
 L = []
 t = []
+M = []
+E = []
 
 for k in range(len(files)):
     data = athena_read.athdf(files[k])
     r = data['x1f'][0:64]
     theta = data['x2f'][0:64]
     t.append(data['Time'])
-    sum = 0
+    L_sum = 0
+    E_sum = 0
+    M_sum = 0
     i = 0
     j = 0
-    while i <= 63:
-        while j <= 63:
-            sum = sum + r[i] * data['rho'][0, j, i] * data['vel2'][0, j, i] # * 2 * np.pi * r[i] *
-            j = j + 1
-        i = i + 1
-    L.append(sum)
+    for i in range(63):
+        for j in range(63):
+            L_sum = L_sum + ((r[i+1]+r[i])/2)**(2) * data['rho'][0, j, i] * data['vel2'][0, j, i] * (r[i+1]-r[i]) * (theta[j+1]-theta[j])
+            M_sum = M_sum + data['rho'][0, j, i] * (r[i+1]-r[i]) * (theta[j+1]-theta[j])
+            E_sum = (E_sum + (1/2)*(data['rho'][0, j, i] * (r[i+1]-r[i]) * (theta[j+1]-theta[j]))*((data['vel1'][0, j, i]**(2)+
+                data['vel2'][0, j, i]**(2)+data['vel3'][0, j, i]**(2))))
+            # - (data['rho'][0, j, i] * (r[i+1]-r[i]) * 
+            # (theta[j+1]-theta[j]))/((r[i+1]+r[i])/2))
+    L.append(L_sum)
+    M.append(M_sum)
+    E.append(E_sum)
 
-print(len(L))
-print(len(t))
+plt.scatter(t,L)
+plt.xlabel('time')
+plt.ylabel('Angular Momentum')
+plt.show()
 
-plt.plot(t,L)
+plt.scatter(t,M)
+plt.xlabel('time')
+plt.ylabel('Mass')
+plt.show()
+
+plt.scatter(t,E)
+plt.xlabel('time')
+plt.ylabel('KE')
+plt.show()
 
 # for i in range(len(files)):
 #     data = athena_read.athdf(files[i])
@@ -149,4 +168,7 @@ plt.plot(t,L)
 # print(data['rho'][0,:,:][rows,cols])
 # print(data['x2f'][0:64][rows])
 
-plt.show()
+
+# dmass = density * area element
+# dA = r*dr*dtheta
+# Angular mom = r*dmass*v_tangential

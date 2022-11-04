@@ -37,9 +37,21 @@ mom_tot = np.sqrt(mom_1**(2) + mom_2**(2) + mom_3**(2))
 # plt.ylabel('Total Energy')
 # plt.axhline(y=9.787415,color='red')
 
-plt.scatter(time,mom_tot,s=5)
+plt.scatter(time,mass,s=5)
 plt.xlabel('Time')
-plt.ylabel('Momentum')
+plt.ylabel('Total Mass')
+plt.show()
+
+plt.scatter(time,tot_E,s=5)
+plt.xlabel('Time')
+plt.ylabel('Total Energy')
+plt.show()
+
+plt.scatter(time,KE_tot,s=5)
+plt.xlabel('Time')
+plt.ylabel('Total KE')
+plt.show()
+
 # plt.axhline(y=9.787415,color='red')
 
 # plt.scatter(time[750:],mass[750:],s=5)
@@ -69,4 +81,3 @@ plt.ylabel('Momentum')
 # print(np.abs(((np.max(mass[750:])-avg_m)/avg_m)*100))
 # print(np.abs(((np.min(mass[750:])-avg_m)/avg_m)*100))
 
-plt.show()
