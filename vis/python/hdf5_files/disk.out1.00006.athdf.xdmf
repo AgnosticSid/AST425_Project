@@ -1,0 +1,53 @@
+<?xml version="1.0" ?>
+<!DOCTYPE Xdmf SYSTEM "Xdmf.dtd" []>
+<Xdmf Version="2.0">
+<Information Name="TimeVaryingMetaData" Value="True"/>
+<Domain>
+<Grid Name="Mesh" GridType="Collection">
+ <Time Value="60.0003"/>
+  <Grid Name="MeshBlock0" GridType="Uniform">
+    <Topology TopologyType="2DRectMesh" NumberOfElements="65 65"/>
+    <Geometry GeometryType="VXVY">
+      <DataItem ItemType="HyperSlab" Dimensions="65">
+        <DataItem Dimensions="3 2" NumberType="Int"> 0 0 1 1 1 65 </DataItem>
+        <DataItem Dimensions="1 65" Format="HDF"> disk.out1.00006.athdf:/x1f </DataItem>
+      </DataItem>
+      <DataItem ItemType="HyperSlab" Dimensions="65">
+        <DataItem Dimensions="3 2" NumberType="Int"> 0 0 1 1 1 65 </DataItem>
+        <DataItem Dimensions="1 65" Format="HDF"> disk.out1.00006.athdf:/x2f </DataItem>
+      </DataItem>
+    </Geometry>
+    <Attribute Name="rho" Center="Cell">
+      <DataItem ItemType="HyperSlab" Dimensions="64 64">
+        <DataItem Dimensions="3 5" NumberType="Int"> 0 0 0 0 0 1 1 1 1 1 1 1 1 64 64 </DataItem>
+        <DataItem Dimensions="5 1 1 64 64" Format="HDF"> disk.out1.00006.athdf:/prim </DataItem>
+      </DataItem>
+    </Attribute>
+    <Attribute Name="press" Center="Cell">
+      <DataItem ItemType="HyperSlab" Dimensions="64 64">
+        <DataItem Dimensions="3 5" NumberType="Int"> 1 0 0 0 0 1 1 1 1 1 1 1 1 64 64 </DataItem>
+        <DataItem Dimensions="5 1 1 64 64" Format="HDF"> disk.out1.00006.athdf:/prim </DataItem>
+      </DataItem>
+    </Attribute>
+    <Attribute Name="vel1" Center="Cell">
+      <DataItem ItemType="HyperSlab" Dimensions="64 64">
+        <DataItem Dimensions="3 5" NumberType="Int"> 2 0 0 0 0 1 1 1 1 1 1 1 1 64 64 </DataItem>
+        <DataItem Dimensions="5 1 1 64 64" Format="HDF"> disk.out1.00006.athdf:/prim </DataItem>
+      </DataItem>
+    </Attribute>
+    <Attribute Name="vel2" Center="Cell">
+      <DataItem ItemType="HyperSlab" Dimensions="64 64">
+        <DataItem Dimensions="3 5" NumberType="Int"> 3 0 0 0 0 1 1 1 1 1 1 1 1 64 64 </DataItem>
+        <DataItem Dimensions="5 1 1 64 64" Format="HDF"> disk.out1.00006.athdf:/prim </DataItem>
+      </DataItem>
+    </Attribute>
+    <Attribute Name="vel3" Center="Cell">
+      <DataItem ItemType="HyperSlab" Dimensions="64 64">
+        <DataItem Dimensions="3 5" NumberType="Int"> 4 0 0 0 0 1 1 1 1 1 1 1 1 64 64 </DataItem>
+        <DataItem Dimensions="5 1 1 64 64" Format="HDF"> disk.out1.00006.athdf:/prim </DataItem>
+      </DataItem>
+    </Attribute>
+  </Grid>
+</Grid>
+</Domain>
+</Xdmf>
